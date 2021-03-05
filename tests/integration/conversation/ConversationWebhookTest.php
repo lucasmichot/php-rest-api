@@ -126,7 +126,7 @@ class ConversationWebhookTest extends BaseTest
         $webhook->createdDatetime = '2018-07-20T12:13:41+00:00';
         $webhook->updatedDatetime = '2018-07-20T12:13:51+00:00';
 
-        $this->assertSame(
+        $this->assertEquals(
             $webhook,
             $this->client->conversationWebhooks->read('some-id')
         );

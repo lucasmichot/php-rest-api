@@ -119,7 +119,7 @@ class ConversationTest extends BaseTest
         $message->to = '31612345678';
         $message->type = 'location';
         $message->content = $content;
-        
+
         $this->client->conversations->start($message);
     }
 
@@ -132,10 +132,10 @@ class ConversationTest extends BaseTest
             ->expects($this->once())->method('performHttpRequest')
             ->with('POST', 'conversations', null, self::CREATE_REQUEST)
             ->willReturn([200, '', '{}']);
-        
+
         $this->client->conversations->create('some-contact-id');
     }
-    
+
     public function testList()
     {
         $this->mockClient
@@ -150,7 +150,7 @@ class ConversationTest extends BaseTest
         $list->totalCount = 1;
         $list->items = [$this->getConversation()];
 
-        $this->assertSame(
+        $this->assertEquals(
             $list,
             $this->client->conversations->getList()
         );
@@ -163,7 +163,7 @@ class ConversationTest extends BaseTest
             ->with('GET', 'conversations/conversation-id', null, null)
             ->willReturn([200, '', self::READ_RESPONSE]);
 
-        $this->assertSame(
+        $this->assertEquals(
             $this->getConversation(),
             $this->client->conversations->read('conversation-id')
         );
@@ -175,12 +175,12 @@ class ConversationTest extends BaseTest
             ->expects($this->exactly(2))->method('performHttpRequest')
             ->withConsecutive(
                 ['PATCH', 'conversations/conversation-id', null, '{"status":"archived"}'],
-                ['PATCH', 'conversations/conversation-id', null, '{"status":"active"}']                
+                ['PATCH', 'conversations/conversation-id', null, '{"status":"active"}']
             )
             ->willReturn([200, '', '{}']);
 
         $conversation = new Conversation();
-        
+
         $conversation->status = Conversation::STATUS_ARCHIVED;
         $this->client->conversations->update($conversation, 'conversation-id');
 

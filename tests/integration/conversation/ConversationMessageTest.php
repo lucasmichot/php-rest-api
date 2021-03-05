@@ -168,7 +168,7 @@ class ConversationMessageTest extends BaseTest
         $expectedMessage->status = 'delivered';
         $expectedMessage->createdDatetime = '2002-10-02T16:00:00Z';
 
-        $this->assertSame($expectedMessage, $message);
+        $this->assertEquals($expectedMessage, $message);
     }
 
     public function testReadMessage()
