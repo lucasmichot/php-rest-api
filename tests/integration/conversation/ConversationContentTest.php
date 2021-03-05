@@ -32,7 +32,7 @@ class ConversationContentTest extends BaseTest
         $message->content = $content;
         $message->type = 'audio';
 
-        $this->assertEquals($message, $this->messageFromJson(
+        $this->assertSame($message, $this->messageFromJson(
             '{"type":"audio","content":{"audio":{"url":"https://example.com/audio.mp3"}}}'
         ));
     }
@@ -46,7 +46,7 @@ class ConversationContentTest extends BaseTest
         $message->content = $content;
         $message->type = 'file';
 
-        $this->assertEquals($message, $this->messageFromJson(
+        $this->assertSame($message, $this->messageFromJson(
             '{"type":"file","content":{"file":{"url":"https://example.com/file.pdf"}}}'   
         ));
     }
@@ -60,7 +60,7 @@ class ConversationContentTest extends BaseTest
         $message->content = $content;
         $message->type = 'image';
 
-        $this->assertEquals($message, $this->messageFromJson(
+        $this->assertSame($message, $this->messageFromJson(
             '{"type":"image","content":{"image":{"url":"https://example.com/image.png"}}}'
         ));
     }
@@ -77,7 +77,7 @@ class ConversationContentTest extends BaseTest
         $message->content = $content;
         $message->type = 'location';
 
-        $this->assertEquals($message, $this->messageFromJson(
+        $this->assertSame($message, $this->messageFromJson(
             '{"type":"location","content":{"location":{"latitude":"37.778326","longitude":"-122.394648"}}}'
         ));
     }
@@ -91,7 +91,7 @@ class ConversationContentTest extends BaseTest
         $message->content = $content;
         $message->type = 'text';
 
-        $this->assertEquals($message, $this->messageFromJson(
+        $this->assertSame($message, $this->messageFromJson(
             '{"type":"text","content":{"text":"Foo Bar"}}'
         ));
     }
@@ -105,7 +105,7 @@ class ConversationContentTest extends BaseTest
         $message->content = $content;
         $message->type = 'video';
 
-        $this->assertEquals($message, $this->messageFromJson(
+        $this->assertSame($message, $this->messageFromJson(
             '{"type":"video","content":{"video":{"url":"https://example.com/video.mp4"}}}'
         ));
     }

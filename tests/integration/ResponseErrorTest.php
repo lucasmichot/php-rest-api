@@ -13,7 +13,7 @@ class ResponseErrorTest extends BaseTest
 
     public function testSingleError()
     {
-        $this->assertEquals(
+        $this->assertSame(
             sprintf(self::EXCEPTION_MESSAGE, 'foo'),
             $this->getExceptionMessageFromJson(self::SINGLE_ERROR_JSON)
         );
@@ -21,7 +21,7 @@ class ResponseErrorTest extends BaseTest
     
     public function testMultipleErrors()
     {
-        $this->assertEquals(
+        $this->assertSame(
             sprintf(self::EXCEPTION_MESSAGE, 'bar'),
             $this->getExceptionMessageFromJson(self::MULTIPLE_ERRORS_JSON)
         );

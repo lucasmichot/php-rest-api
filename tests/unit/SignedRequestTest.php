@@ -22,10 +22,10 @@ class SignedRequestTest extends TestCase
 
         $request = SignedRequest::create($query, $signature, $requestTimestamp, $body);
 
-        $this->assertEquals($requestTimestamp, $request->requestTimestamp);
-        $this->assertEquals($body, $request->body);
-        $this->assertEquals($query, $request->queryParameters);
-        $this->assertEquals($signature, $request->signature);
+        $this->assertSame($requestTimestamp, $request->requestTimestamp);
+        $this->assertSame($body, $request->body);
+        $this->assertSame($query, $request->queryParameters);
+        $this->assertSame($signature, $request->signature);
     }
 
     public function testLoadFromArray()
@@ -51,10 +51,10 @@ class SignedRequestTest extends TestCase
             'body' => $body
         ]);
 
-        $this->assertEquals($requestTimestamp, $request->requestTimestamp);
-        $this->assertEquals($body, $request->body);
-        $this->assertEquals($query, $request->queryParameters);
-        $this->assertEquals($signature, $request->signature);
+        $this->assertSame($requestTimestamp, $request->requestTimestamp);
+        $this->assertSame($body, $request->body);
+        $this->assertSame($query, $request->queryParameters);
+        $this->assertSame($signature, $request->signature);
     }
 
     public function testLoadInvalidQuery()

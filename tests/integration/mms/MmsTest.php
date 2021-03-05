@@ -52,9 +52,9 @@ class MmsTest extends BaseTest
 
         $ResultMessages = $this->client->mmsMessages->getList(['offset' => 100, 'limit' => 30]);
 
-        $this->assertAttributeEquals(0, 'offset', $ResultMessages);
-        $this->assertAttributeEquals(1, 'count', $ResultMessages);
-        $this->assertAttributeEquals(2, 'totalCount', $ResultMessages);
+        $this->assertAttributeSame(0, 'offset', $ResultMessages);
+        $this->assertAttributeSame(1, 'count', $ResultMessages);
+        $this->assertAttributeSame(2, 'totalCount', $ResultMessages);
 
         $this->assertCount(2, $ResultMessages->items);
         $this->assertMessagesAreEqual($dummyMessage, $ResultMessages->items[0], 'message_id');
@@ -121,14 +121,14 @@ class MmsTest extends BaseTest
      */
     private function assertMessagesAreEqual(\MessageBird\Objects\MmsMessage $MmsMessage, \MessageBird\Objects\MmsMessage $ResultMmsMessage, $expectedId)
     {
-        $this->assertAttributeEquals($expectedId, 'id', $ResultMmsMessage);
-        $this->assertAttributeEquals("https://rest.messagebird.com/mms/{$expectedId}", 'href', $ResultMmsMessage);
-        $this->assertAttributeEquals($MmsMessage->direction, 'direction', $ResultMmsMessage);
-        $this->assertAttributeEquals($MmsMessage->originator, 'originator', $ResultMmsMessage);
-        $this->assertAttributeEquals($MmsMessage->subject, 'subject', $ResultMmsMessage);
-        $this->assertAttributeEquals($MmsMessage->body, 'body', $ResultMmsMessage);
-        $this->assertAttributeEquals($MmsMessage->mediaUrls, 'mediaUrls', $ResultMmsMessage);
-        $this->assertAttributeEquals($MmsMessage->reference, 'reference', $ResultMmsMessage);
+        $this->assertAttributeSame($expectedId, 'id', $ResultMmsMessage);
+        $this->assertAttributeSame("https://rest.messagebird.com/mms/{$expectedId}", 'href', $ResultMmsMessage);
+        $this->assertAttributeSame($MmsMessage->direction, 'direction', $ResultMmsMessage);
+        $this->assertAttributeSame($MmsMessage->originator, 'originator', $ResultMmsMessage);
+        $this->assertAttributeSame($MmsMessage->subject, 'subject', $ResultMmsMessage);
+        $this->assertAttributeSame($MmsMessage->body, 'body', $ResultMmsMessage);
+        $this->assertAttributeSame($MmsMessage->mediaUrls, 'mediaUrls', $ResultMmsMessage);
+        $this->assertAttributeSame($MmsMessage->reference, 'reference', $ResultMmsMessage);
 
         foreach($ResultMmsMessage->recipients->items as $item) {
             $this->assertArraySubset([$item->recipient], $MmsMessage->recipients);

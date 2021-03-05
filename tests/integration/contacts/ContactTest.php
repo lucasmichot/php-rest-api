@@ -105,7 +105,7 @@ class ContactTest extends BaseTest
             ]
         ];
 
-        $this->assertEquals($GroupList, $ResultingGroupList);
+        $this->assertSame($GroupList, $ResultingGroupList);
     }
 
     public function testContactGetMessages()

@@ -150,7 +150,7 @@ class ConversationTest extends BaseTest
         $list->totalCount = 1;
         $list->items = [$this->getConversation()];
 
-        $this->assertEquals(
+        $this->assertSame(
             $list,
             $this->client->conversations->getList()
         );
@@ -163,7 +163,7 @@ class ConversationTest extends BaseTest
             ->with('GET', 'conversations/conversation-id', null, null)
             ->willReturn([200, '', self::READ_RESPONSE]);
 
-        $this->assertEquals(
+        $this->assertSame(
             $this->getConversation(),
             $this->client->conversations->read('conversation-id')
         );

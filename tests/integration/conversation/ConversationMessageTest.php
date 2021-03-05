@@ -138,10 +138,10 @@ class ConversationMessageTest extends BaseTest
 
         $messages = $this->client->conversationMessages->getList('genid');
 
-        $this->assertEquals(1, $messages->count);
-        $this->assertEquals(1, $messages->totalCount);
-        $this->assertEquals(25, $messages->limit);
-        $this->assertEquals(0, $messages->offset);
+        $this->assertSame(1, $messages->count);
+        $this->assertSame(1, $messages->totalCount);
+        $this->assertSame(25, $messages->limit);
+        $this->assertSame(0, $messages->offset);
     }
 
     public function testListObject()
@@ -168,7 +168,7 @@ class ConversationMessageTest extends BaseTest
         $expectedMessage->status = 'delivered';
         $expectedMessage->createdDatetime = '2002-10-02T16:00:00Z';
 
-        $this->assertEquals($expectedMessage, $message);
+        $this->assertSame($expectedMessage, $message);
     }
 
     public function testReadMessage()
@@ -195,6 +195,6 @@ class ConversationMessageTest extends BaseTest
         $expectedMessage->status = 'delivered';
         $expectedMessage->createdDatetime = '2002-10-02T16:00:00Z';
 
-        $this->assertEquals($expectedMessage, $message);
+        $this->assertSame($expectedMessage, $message);
     }
 }

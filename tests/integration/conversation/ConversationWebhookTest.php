@@ -81,10 +81,10 @@ class ConversationWebhookTest extends BaseTest
 
         $webhooks = $this->client->conversationWebhooks->getList();
 
-        $this->assertEquals(1, $webhooks->count);
-        $this->assertEquals(1, $webhooks->totalCount);
-        $this->assertEquals(25, $webhooks->limit);
-        $this->assertEquals(0, $webhooks->offset);
+        $this->assertSame(1, $webhooks->count);
+        $this->assertSame(1, $webhooks->totalCount);
+        $this->assertSame(25, $webhooks->limit);
+        $this->assertSame(0, $webhooks->offset);
     }
 
     public function testListObject()
@@ -101,7 +101,7 @@ class ConversationWebhookTest extends BaseTest
         $expectedWebhook->url = 'https://example.com/webhook';
         $expectedWebhook->createdDatetime = '2018-07-31T12:12:43Z';
 
-        $this->assertEquals(
+        $this->assertSame(
             $expectedWebhook,
             $this->client->conversationWebhooks->getList()->items[0]
         );
@@ -126,7 +126,7 @@ class ConversationWebhookTest extends BaseTest
         $webhook->createdDatetime = '2018-07-20T12:13:41+00:00';
         $webhook->updatedDatetime = '2018-07-20T12:13:51+00:00';
 
-        $this->assertEquals(
+        $this->assertSame(
             $webhook,
             $this->client->conversationWebhooks->read('some-id')
         );
